@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZOZpQzgMdmzEA97gVSpZf2TAo6jaaL7tFDUZdCE22Jzt2RVadQvegi+gFhNhTgogrTcv2olSfxeod5UGmL2hqw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\janis\\OneDrive\\Dators\\Projekti\\Hex_Bin\\Hex Bin\\Hex Bin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\janis\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

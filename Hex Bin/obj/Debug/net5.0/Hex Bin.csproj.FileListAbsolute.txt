@@ -1,0 +1,16 @@
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.exe
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.deps.json
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.runtimeconfig.json
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.runtimeconfig.dev.json
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.dll
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\ref\Hex Bin.dll
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\bin\Debug\net5.0\Hex Bin.pdb
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.csproj.AssemblyReference.cache
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.AssemblyInfoInputs.cache
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.AssemblyInfo.cs
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.csproj.CoreCompileInputs.cache
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.dll
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\ref\Hex Bin.dll
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.pdb
+C:\Users\janis\OneDrive\Dators\Projekti\Hex_Bin\Hex Bin\obj\Debug\net5.0\Hex Bin.genruntimeconfig.cache
