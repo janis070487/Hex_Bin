@@ -21,8 +21,7 @@ namespace Hex_Bin
         public int WordSize = 1;       // No cik baitiem sastāvēs vards iespējamais 1 2 4
         public int MinAdress = 0;      // no kuras baita sak lasit 
         public int MaxAdress = 1024;   // lidz kuram baitam lasit
-        
-        //_________________________________________________________________________________
+         //_________________________________________________________________________________
         private byte[] data = null;
         private string[] formatdata = null;
         private string path = null;
@@ -33,7 +32,6 @@ namespace Hex_Bin
         public byte[] Data => data;
         //___________________________Paligdati________________________________________________
         private string[] adressAray = null;
-        
         //_____________________________________________________________________________________
         public file(string path)     // konstruktors ja lasa no faila
         {
@@ -53,12 +51,11 @@ namespace Hex_Bin
         //______________________adrešu formatēšana__________________________________
         private void adressformat()
         {
-            
+         //   
         }
         public void Format()
         {
-
+//
         }
-
-    }
+     }
 }
