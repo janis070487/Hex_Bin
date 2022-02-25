@@ -11,11 +11,12 @@ namespace Hex_Bin
             //FileLoad f = new FileLoad(Path);
             file f = new file(Path);
             f.ShowAdres = true;
+            f.ShowAscii = true;
             f.Minbyte = 0;
             f.Maxbyte = 64;
             f.WordSize = 2;
             f.ColonWord = 4;
-           result =  f.dataFormat();
+           result =  f.Format();
             if (result != null)
             {
                 for (int i = 0; i < result.Length; i++)
