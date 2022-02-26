@@ -9,9 +9,11 @@ namespace Hex_Bin
     internal class file
     {
         //____________________________Parametri____________________________________________
-        private int byteCounter = 0;
+        //private int byteCounter = 0;
+        public bool AllByte = false;
         public string format = "hex"; // pieņem   hex bin dec asci  kada formata attēlot datus
         public char symbol = '.';     // Ja kods neatbilst nevienam simbolam tad to aizstāj ar šo simbolu
+        public bool ShowLineNumbers = false;
         public bool ShowAdres = false; //Parādīt rindu adreses
         public bool ShowValue = false; //parada rindu vertibu parveršot vesalajos sakitlos
         public bool ShowAscii = false; //parada rindu vertibu parversot Asci simbolos
@@ -31,6 +33,7 @@ namespace Hex_Bin
        // public string[] FormatData => formatdata != null ? formatdata : null;
         public byte[] Data => data;
         //___________________________Paligdati________________________________________________
+        private string[] LineNumber = null;
         private string[] adressAray = null;   //sagatavotas rindam adreses atsevišķā metodē
         private string[] asciiAray = null;    //
         private string[] value = null;
@@ -45,7 +48,7 @@ namespace Hex_Bin
             data = f.Load();
             if ((data != null)&&(f.ErrorCode != false))
             {
-                errorcode = "Dati netika nolasīti";
+                errorcode = "Dati tika nolasīti";
             }
         }
         public file(byte[] data)   // konstruktors ja vajaag nokopēt datus
@@ -59,6 +62,14 @@ namespace Hex_Bin
             return formatdata;
         }
         //______________________adrešu formatēšana__________________________________
+        private void Numberline()
+        {
+            LineNumber = new string[line];
+            for(int i = 0; i < line; i++)
+            {
+                LineNumber[i] = Convert.ToString(i, toBase: 10);
+            }
+        }
         private void adressformat()
         {
            
@@ -73,7 +84,8 @@ namespace Hex_Bin
                         acumulator = '0' + acumulator;
                     }
                     adressAray[i] = acumulator;
-                    acumulator = "";
+                    //acumulator = "";
+
                 }
             
         }
@@ -81,33 +93,55 @@ namespace Hex_Bin
         {
 
             asciiAray = new string[line];
-            int counter = 0;
+            int counter = Minbyte;
             for (int i = 0; i < line; i++)
             {
                 
-                for (int j = 0; j < ColonWord + WordSize; j++)
+                for (int j = 0; j < ColonWord * WordSize; j++)
                 {
-                    if ((data[counter] > 32) && (data[counter] < 127))
+                    if (counter < Maxbyte)
                     {
-                        asciiAray[i] = asciiAray[i] + Convert.ToChar(data[counter]);
+                        if ((data[counter] > 31) && (data[counter] < 127))
+                        {
+                            asciiAray[i] = asciiAray[i] + Convert.ToChar(data[counter]);
+                        }
+                        else
+                        {
+                            asciiAray[i] = asciiAray[i] + symbol;
+                        }
+                        counter++;
                     }
-                    else
-                    {
-                        asciiAray[i] = asciiAray[i] + symbol;
-                    }
-                    counter++;
                 }
             }
         }
         private void valueFornat()
         {
             value = new string[line];
+            int counter = Minbyte;
+            uint val1 = 0;
+            uint val2 = 0;
+            
+            for(int i = 0; i < line; ++i)
+            {
+                for (int j = 0; j < ColonWord; j++)
+                {
+                    for (int k = 0; k < WordSize; k++)
+                    {
+                        //val1 = Convert.ToUint32(data[counter]);
+                        val1 = Convert.ToUInt32(data[counter]);
+                        val2 = val2 + (val1 << ((WordSize - 1) * 8) - (k * 8));
+                        counter++;
+                    }
+                    value[i] = value[i] + Convert.ToString(val2, toBase: 10) + '\t';
+                    val2 = 0;
+                }
+            }
         }
         private void dataFormat()
         {
            firstData = new string[line];
-            int counter = minAdress;                   // ar kuru baitu sak kautko darit
-            for (int i = 0; i < firstData.Length; i++) // aizpilda visas rindas
+            int counter = Minbyte;                   // ar kuru baitu sak kautko darit
+            for (int i = 0; i < line; i++) // aizpilda visas rindas
             {
                 string acumulator = null;
                for(int j = 0; j < ColonWord; j++) // aizpilda vardus rinda
@@ -119,13 +153,11 @@ namespace Hex_Bin
                         {
                             acumulator = '0' + acumulator;
                         }
-                        if (byteCounter < Maxbyte)
+                        if (counter < Maxbyte)
                         {
                             firstData[i] = firstData[i] + acumulator;
                         counter++;
-                        byteCounter++;
-                        
-                           
+                        //counter++;
                         }
                         
                     }
@@ -138,9 +170,10 @@ namespace Hex_Bin
         private void restart()
         {
             //___________________nomešana_______________________________
+            LineNumber = null;
             formatdata = null;
             line = 0;
-            byteCounter = 0;
+            //counter = 0;
             adressAray = null;
             firstData = null;
             asciiAray = null;
@@ -156,11 +189,20 @@ namespace Hex_Bin
                 line++;
             }
             formatdata = new string[line]; // beigu dati
+            if (AllByte)
+            {
+                Minbyte = 0;
+                Maxbyte = data.Length;
+            }
         }
         private void finishData()
         {
         for(int i = 0; i < line; i++)
             {
+                if(ShowLineNumbers)
+                {
+                    formatdata[i] = formatdata[i] + LineNumber[i] + '\t';
+                }
                 if (ShowAdres)
                 {
                     formatdata[i] = formatdata[i] + adressAray[i] + '\t';
@@ -174,13 +216,17 @@ namespace Hex_Bin
                 }
                 if (ShowValue)
                 {
-
+                    formatdata[i] = formatdata[i] + value[i] + '\t';
                 }
             }
         }
         public string[] Format()
         {
            restart();
+            if(ShowLineNumbers)
+            {
+                Numberline();
+            }
             if (ShowAdres)
             {
                 adressformat();

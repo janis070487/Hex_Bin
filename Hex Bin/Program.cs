@@ -10,12 +10,16 @@ namespace Hex_Bin
             string Path = "ConsoleApplication1.exe";
             //FileLoad f = new FileLoad(Path);
             file f = new file(Path);
+           
             f.ShowAdres = true;
             f.ShowAscii = true;
+            f.ShowLineNumbers = true;
+            f.ShowValue = true;
             f.Minbyte = 0;
-            f.Maxbyte = 64;
-            f.WordSize = 2;
-            f.ColonWord = 4;
+            f.Maxbyte = 1024;
+            f.AllByte = false;
+            f.WordSize = 4;
+            f.ColonWord = 2;
            result =  f.Format();
             if (result != null)
             {
